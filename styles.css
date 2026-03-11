@@ -68,12 +68,13 @@
 }
 
 .pt-list-section {
-	font-size: 11px;
+	font-size: 13px;
 	text-transform: uppercase;
 	letter-spacing: 1.5px;
-	color: var(--text-faint);
-	margin-top: 14px;
-	margin-bottom: 4px;
+	color: var(--text-muted);
+	font-weight: 600;
+	margin-top: 16px;
+	margin-bottom: 6px;
 	background: none;
 	border: none;
 	padding: 0;
@@ -348,7 +349,7 @@
 	display: none;
 	width: 100%;
 	max-width: 320px;
-	padding: 14px 24px;
+	padding: 14px 0;
 	font-size: 17px;
 	font-weight: 600;
 	border: none;
