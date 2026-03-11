@@ -126,7 +126,8 @@ function extractSideWord(text: string): string {
  * to get a clean display name.
  */
 function parseExerciseName(text: string): { fullText: string; displayName: string } {
-	const fullText = text.replace(/^-\s*\[.\]\s*/, "").trim();
+	// Remove leading whitespace and checkbox syntax
+	const fullText = text.replace(/^[\s\t]*-\s*\[.\]\s*/, "").trim();
 	// Strip trailing notation like ": 3x10", ": 3x40 seconds per side", ": 30s each arm"
 	const displayName = fullText
 		.replace(/:\s*\d+\s*x\s*\d+(\s*(?:seconds?|sec|s|min(?:utes?)?))?(\s*(?:per|each)\s+\w+)?\s*$/i, "")

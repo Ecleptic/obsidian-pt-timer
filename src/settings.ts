@@ -65,6 +65,27 @@ export class PTTimerSettingTab extends PluginSettingTab {
 					}),
 			);
 
+		// Add exercise format documentation
+		const formatDoc = containerEl.createDiv({ cls: "setting-item-description" });
+		formatDoc.style.marginTop = "1em";
+		formatDoc.style.padding = "0.5em";
+		formatDoc.style.backgroundColor = "var(--background-secondary)";
+		formatDoc.style.borderRadius = "4px";
+		formatDoc.innerHTML = `
+			<strong>Exercise Format Examples:</strong><br><br>
+			<code>- [ ] Cat cow: 2x15</code> → 2 sets of 15 reps<br>
+			<code>- [ ] Side plank: 3x30 seconds</code> → 3 sets of 30s holds<br>
+			<code>- [ ] Clamshells: 3x15 per side</code> → 3 sets of 15 reps each side<br>
+			<code>- [ ] Single leg deadlift: 3x40s per leg</code> → 3 sets of 40s each leg<br><br>
+
+			<strong>Supported formats:</strong><br>
+			• <code>NxN</code> = sets × reps (e.g. 3x10)<br>
+			• <code>Nx Ns</code> or <code>Nx N seconds</code> = sets × time (e.g. 3x30s)<br>
+			• Add <code>per side</code>, <code>per arm</code>, <code>per leg</code> for bilateral exercises<br>
+			• Timer auto-detects timed vs rep-based exercises
+		`;
+		containerEl.appendChild(formatDoc);
+
 		if (this.plugin.settings.exerciseSource === "template-file") {
 			new Setting(containerEl)
 				.setName("Template file path")
