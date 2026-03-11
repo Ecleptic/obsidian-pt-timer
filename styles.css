@@ -335,6 +335,9 @@
 	padding: 12px 20px max(16px, env(safe-area-inset-bottom));
 	flex-shrink: 0;
 	border-top: 1px solid var(--background-modifier-border);
+	background: var(--background-primary);
+	position: relative;
+	z-index: 10;
 }
 
 /* ── Start Workout Button (ready state only) ─────────────────── */
