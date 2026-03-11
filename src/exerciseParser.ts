@@ -229,13 +229,59 @@ export function parseExercisesFromContent(
 	settings: PTTimerSettings,
 ): Exercise[] {
 	const sectionLines = extractSection(content, settings.sectionHeading);
-	return parseExerciseLines(sectionLines, settings.transitionDuration);
+	return parseExerciseLines(sectionLines, settings);
 }
 
 /**
  * Parse extracted section lines into Exercise objects.
  */
-function parseExerciseLines(lines: string[], transitionDuration: number): Exercise[] {
+function parseExerciseLines(lines: string[], settings: PTTimerSettings): Exercise[] {
+	if (settings.sectionHeaderFormat === "bold-list") {
+		return parseExerciseLinesWithBoldHeaders(lines, settings.transitionDuration);
+	} else {
+		return parseExerciseLinesWithCheckboxGroups(lines, settings.transitionDuration);
+	}
+}
+
+/**
+ * Parse exercises when using bold list item headers (e.g. "- **Stretch**")
+ */
+function parseExerciseLinesWithBoldHeaders(lines: string[], transitionDuration: number): Exercise[] {
+	const exercises: Exercise[] = [];
+	let currentSection: string | null = null;
+
+	for (const line of lines) {
+		// Check if this is a bold section header: "- **SectionName**"
+		const boldHeaderMatch = line.match(/^- \*\*([^*]+)\*\*$/);
+		if (boldHeaderMatch) {
+			currentSection = boldHeaderMatch[1].trim();
+			continue;
+		}
+
+		// Skip metadata lines like "- **Focus:** ..."
+		if (line.match(/^[\t\s]*- \*\*[^*]+:\*\*/)) {
+			continue;
+		}
+
+		// Parse checkbox exercises (indented or not)
+		const checkboxMatch = line.match(/^[\t\s]*- \[(.)\]/);
+		if (checkboxMatch) {
+			// Skip already completed exercises
+			if (checkboxMatch[1].toLowerCase() === 'x') continue;
+
+			const { fullText, displayName } = parseExerciseName(line);
+			const { sets, steps } = parseSetRep(fullText, transitionDuration);
+			exercises.push({ name: displayName, section: currentSection, sets, steps });
+		}
+	}
+
+	return exercises;
+}
+
+/**
+ * Parse exercises when using checkbox group headers (old format)
+ */
+function parseExerciseLinesWithCheckboxGroups(lines: string[], transitionDuration: number): Exercise[] {
 	interface Group {
 		line: string;
 		children: string[];

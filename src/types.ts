@@ -27,6 +27,7 @@ export interface Exercise {
 }
 
 export type ExerciseSource = "daily-note" | "template-file";
+export type SectionHeaderFormat = "checkbox" | "bold-list";
 
 export interface PTTimerSettings {
 	/** Where to read exercises from */
@@ -35,6 +36,8 @@ export interface PTTimerSettings {
 	sectionHeading: string;
 	/** Path to a template file (relative to vault root) when using template-file source */
 	templatePath: string;
+	/** How section headers are formatted within the PT section */
+	sectionHeaderFormat: SectionHeaderFormat;
 	/** Default rest duration in seconds */
 	restDuration: number;
 	/** Default transition duration in seconds (for "per side" exercises) */
@@ -50,6 +53,7 @@ export const DEFAULT_SETTINGS: PTTimerSettings = {
 	exerciseSource: "daily-note",
 	sectionHeading: "PT",
 	templatePath: "",
+	sectionHeaderFormat: "bold-list",
 	restDuration: 40,
 	transitionDuration: 5,
 	enableAudio: true,

@@ -47,6 +47,24 @@ export class PTTimerSettingTab extends PluginSettingTab {
 					}),
 			);
 
+		new Setting(containerEl)
+			.setName("Section header format")
+			.setDesc(
+				"How subsections within your PT section are formatted. " +
+				"\"Bold list items\" = \"- **Stretch**\", " +
+				"\"Checkbox groups\" = \"- [ ] Stretch\" with nested exercises.",
+			)
+			.addDropdown((drop) =>
+				drop
+					.addOption("bold-list", "Bold list items")
+					.addOption("checkbox", "Checkbox groups")
+					.setValue(this.plugin.settings.sectionHeaderFormat)
+					.onChange(async (value) => {
+						this.plugin.settings.sectionHeaderFormat = value as "bold-list" | "checkbox";
+						await this.plugin.saveSettings();
+					}),
+			);
+
 		if (this.plugin.settings.exerciseSource === "template-file") {
 			new Setting(containerEl)
 				.setName("Template file path")
