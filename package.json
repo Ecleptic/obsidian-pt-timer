@@ -1,0 +1,26 @@
+{
+	"name": "obsidian-pt-timer",
+	"version": "1.0.0",
+	"description": "Physical therapy workout timer for Obsidian",
+	"main": "main.js",
+	"scripts": {
+		"dev": "node esbuild.config.mjs",
+		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
+	},
+	"keywords": [
+		"obsidian",
+		"plugin",
+		"timer",
+		"physical-therapy",
+		"workout"
+	],
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^22.0.0",
+		"builtin-modules": "^4.0.0",
+		"esbuild": "0.24.2",
+		"obsidian": "latest",
+		"tslib": "2.8.1",
+		"typescript": "5.7.3"
+	}
+}

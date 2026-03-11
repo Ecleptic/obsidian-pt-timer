@@ -1,0 +1,483 @@
+/* ── PT Timer Plugin Styles ──────────────────────────────────────── */
+
+.pt-timer-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* ── Progress Bar ─────────────────────────────────────────────── */
+
+.pt-progress-bar {
+	height: 3px;
+	background: var(--background-modifier-border);
+	flex-shrink: 0;
+}
+
+.pt-progress-fill {
+	height: 100%;
+	background: var(--interactive-accent);
+	width: 0;
+	transition: width 0.3s ease;
+}
+
+/* ── Main Content ─────────────────────────────────────────────── */
+
+.pt-main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	position: relative;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   EXERCISE LIST (ready state)
+   ════════════════════════════════════════════════════════════════ */
+
+.pt-exercise-list {
+	display: none;
+	flex-direction: column;
+	padding: 16px 20px;
+}
+
+.pt-state-ready .pt-exercise-list {
+	display: flex;
+}
+
+.pt-list-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	margin-bottom: 12px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.pt-list-title {
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--text-normal);
+}
+
+.pt-list-count {
+	font-size: 12px;
+	color: var(--text-faint);
+}
+
+.pt-list-section {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	color: var(--text-faint);
+	margin-top: 14px;
+	margin-bottom: 4px;
+}
+
+.pt-list-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	padding: 9px 0;
+	border-bottom: 1px solid var(--background-modifier-border-hover);
+}
+
+.pt-list-item:last-child {
+	border-bottom: none;
+}
+
+.pt-list-item-name {
+	font-size: 15px;
+	font-weight: 500;
+	color: var(--text-normal);
+	flex: 1;
+	min-width: 0;
+}
+
+.pt-list-item-info {
+	font-size: 12px;
+	color: var(--text-muted);
+	margin-left: 12px;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.pt-list-empty {
+	text-align: center;
+	color: var(--text-muted);
+	font-size: 16px;
+	padding: 40px 20px 8px;
+}
+
+.pt-list-hint {
+	text-align: center;
+	color: var(--text-faint);
+	font-size: 13px;
+	padding: 0 20px;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   TIMER CONTENT (work / rest / transition states)
+   ════════════════════════════════════════════════════════════════ */
+
+.pt-timer-content {
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+	padding: 20px;
+	text-align: center;
+}
+
+.pt-state-work .pt-timer-content,
+.pt-state-rest .pt-timer-content,
+.pt-state-transition .pt-timer-content {
+	display: flex;
+}
+
+.pt-exercise-position {
+	font-size: 11px;
+	color: var(--text-faint);
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	margin-bottom: 2px;
+}
+
+.pt-section-header {
+	font-size: 11px;
+	color: var(--text-faint);
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	margin-bottom: 8px;
+}
+
+.pt-state-label {
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-weight: 700;
+	margin-bottom: 6px;
+}
+
+/* State label colors */
+.pt-state-work .pt-state-label {
+	color: var(--interactive-accent);
+}
+
+.pt-state-rest .pt-state-label {
+	color: var(--text-muted);
+}
+
+.pt-state-transition .pt-state-label {
+	color: var(--text-accent);
+}
+
+.pt-exercise-name {
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 2px;
+	line-height: 1.2;
+	color: var(--text-normal);
+}
+
+.pt-step-label {
+	font-size: 17px;
+	color: var(--text-accent);
+	font-weight: 600;
+	margin-bottom: 2px;
+	min-height: 22px;
+}
+
+.pt-state-transition .pt-step-label {
+	font-size: 20px;
+}
+
+.pt-set-info {
+	font-size: 15px;
+	color: var(--text-muted);
+	margin-bottom: 16px;
+}
+
+.pt-timer-display {
+	font-size: 80px;
+	font-weight: 200;
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+	margin-bottom: 8px;
+}
+
+/* Timer color by state */
+.pt-state-work .pt-timer-display {
+	color: var(--interactive-accent);
+}
+
+.pt-state-rest .pt-timer-display {
+	color: var(--text-muted);
+}
+
+.pt-state-transition .pt-timer-display {
+	color: var(--text-accent);
+}
+
+.pt-rep-info {
+	font-size: 30px;
+	font-weight: 600;
+	color: var(--interactive-accent);
+	margin-bottom: 12px;
+}
+
+.pt-up-next {
+	font-size: 13px;
+	color: var(--text-faint);
+	margin-top: 12px;
+	min-height: 18px;
+}
+
+.pt-completion-info {
+	font-size: 11px;
+	color: var(--text-faint);
+	margin-top: 4px;
+}
+
+/* ── Action Buttons (Done / Skip Rest) ───────────────────────── */
+
+.pt-done-btn,
+.pt-skip-rest-btn {
+	display: none;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	margin-top: 8px;
+}
+
+.pt-done-btn.is-visible,
+.pt-skip-rest-btn.is-visible {
+	display: block;
+}
+
+.pt-done-btn:active,
+.pt-skip-rest-btn:active {
+	transform: scale(0.96);
+}
+
+.pt-done-btn {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	padding: 12px 56px;
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.pt-skip-rest-btn {
+	background: transparent;
+	color: var(--text-muted);
+	border: 1px solid var(--background-modifier-border);
+	padding: 8px 24px;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+.pt-skip-rest-btn:hover {
+	background: var(--background-modifier-hover);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   DONE CONTENT (done state)
+   ════════════════════════════════════════════════════════════════ */
+
+.pt-done-content {
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+	padding: 20px;
+	text-align: center;
+}
+
+.pt-state-done .pt-done-content {
+	display: flex;
+}
+
+.pt-done-icon {
+	margin-bottom: 16px;
+}
+
+.pt-done-icon svg {
+	width: 56px;
+	height: 56px;
+	color: var(--interactive-accent);
+}
+
+.pt-done-title {
+	font-size: 26px;
+	font-weight: 700;
+	color: var(--interactive-accent);
+	margin-bottom: 6px;
+}
+
+.pt-done-summary {
+	font-size: 15px;
+	color: var(--text-muted);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   CONTROLS AREA
+   ════════════════════════════════════════════════════════════════ */
+
+.pt-controls-area {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 12px 20px max(16px, env(safe-area-inset-bottom));
+	flex-shrink: 0;
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+/* ── Start Workout Button (ready state only) ─────────────────── */
+
+.pt-start-btn {
+	display: none;
+	width: 100%;
+	max-width: 320px;
+	padding: 14px 24px;
+	font-size: 17px;
+	font-weight: 600;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	margin-bottom: 12px;
+}
+
+.pt-state-ready .pt-start-btn {
+	display: block;
+}
+
+.pt-start-btn:active {
+	transform: scale(0.97);
+}
+
+.pt-start-btn.is-disabled {
+	opacity: 0.35;
+	pointer-events: none;
+}
+
+/* ── Transport Controls (active states only) ─────────────────── */
+
+.pt-controls {
+	display: none;
+	gap: 12px;
+	margin-bottom: 12px;
+}
+
+.pt-state-work .pt-controls,
+.pt-state-rest .pt-controls,
+.pt-state-transition .pt-controls {
+	display: flex;
+}
+
+.pt-ctrl-btn {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	border: 2px solid var(--background-modifier-border);
+	background: transparent;
+	color: var(--text-normal);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+}
+
+.pt-ctrl-btn:active {
+	background: var(--background-modifier-hover);
+}
+
+.pt-ctrl-btn svg {
+	width: 20px;
+	height: 20px;
+}
+
+.pt-ctrl-primary {
+	width: 60px;
+	height: 60px;
+	border-color: var(--interactive-accent);
+}
+
+.pt-ctrl-primary svg {
+	width: 26px;
+	height: 26px;
+}
+
+/* ── Start Again Button (done state only) ────────────────────── */
+
+.pt-restart-workout-btn {
+	display: none;
+	width: 100%;
+	max-width: 320px;
+	padding: 14px 24px;
+	font-size: 17px;
+	font-weight: 600;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 12px;
+	cursor: pointer;
+	background: transparent;
+	color: var(--text-normal);
+	margin-bottom: 12px;
+}
+
+.pt-state-done .pt-restart-workout-btn {
+	display: block;
+}
+
+.pt-restart-workout-btn:active {
+	background: var(--background-modifier-hover);
+}
+
+/* ── Rest Duration Adjuster (hidden in done state) ───────────── */
+
+.pt-rest-adjust {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.pt-state-done .pt-rest-adjust {
+	display: none;
+}
+
+.pt-rest-adjust button {
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	border: 1px solid var(--background-modifier-border);
+	background: transparent;
+	color: var(--text-normal);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+}
+
+.pt-rest-adjust button:active {
+	background: var(--background-modifier-hover);
+}
+
+.pt-rest-adjust button svg {
+	width: 16px;
+	height: 16px;
+}
+
+.pt-rest-adjust span {
+	font-size: 13px;
+	color: var(--text-muted);
+	min-width: 60px;
+	text-align: center;
+}

@@ -1,0 +1,10 @@
+{
+	"id": "pt-timer",
+	"name": "PT Timer",
+	"version": "1.0.0",
+	"minAppVersion": "1.5.0",
+	"description": "A physical therapy workout timer that reads exercises from your daily notes and guides you through sets, reps, and timed holds with audio cues.",
+	"author": "Cameron Green",
+	"authorUrl": "https://github.com/cgreen15",
+	"isDesktopOnly": false
+}
