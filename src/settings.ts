@@ -79,9 +79,10 @@ export class PTTimerSettingTab extends PluginSettingTab {
 			<code>- [ ] Single leg deadlift: 3x40s per leg</code> → 3 sets of 40s each leg<br><br>
 
 			<strong>Supported formats:</strong><br>
-			• <code>NxN</code> = sets × reps (e.g. 3x10)<br>
-			• <code>Nx Ns</code> or <code>Nx N seconds</code> = sets × time (e.g. 3x30s)<br>
-			• Add <code>per side</code>, <code>per arm</code>, <code>per leg</code> for bilateral exercises<br>
+			• <code>NxN</code> or <code>N x N</code> = sets × reps (e.g. 3x10, 3 x 10)<br>
+			• <code>Nx Ns</code> or <code>Nx N seconds</code> = sets × time (e.g. 3x30s, 3 x 30 seconds)<br>
+			• Add <code>per side</code>, <code>per arm</code>, <code>per leg</code>, or <code>per hand</code><br>
+			• Body part word is used in labels (e.g. "Left leg" / "Right leg")<br>
 			• Timer auto-detects timed vs rep-based exercises
 		`;
 		containerEl.appendChild(formatDoc);

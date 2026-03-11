@@ -27,6 +27,7 @@ function parseSetRep(
 	const rightLabel = `Right ${sideWord}`;
 
 	// ── Timed: NxN seconds / NxNs / NxN sec / NxN min ──
+	// Allow flexible spacing: "3x10", "3 x 10", "3x 10", "3 x10"
 	const timedSetMatch = text.match(/(\d+)\s*x\s*(\d+)\s*(?:seconds?|sec|s|min(?:utes?)?)\b/i);
 	if (timedSetMatch) {
 		const sets = parseInt(timedSetMatch[1]);
@@ -72,7 +73,8 @@ function parseSetRep(
 	}
 
 	// ── Reps: NxN ──
-	const repMatch = text.match(/(\d+)\s*x\s*(\d+)/);
+	// Allow flexible spacing: "3x10", "3 x 10", "3x 10", "3 x10"
+	const repMatch = text.match(/(\d+)\s*x\s*(\d+)(?!\s*(?:seconds?|sec|s|min(?:utes?)?))/i);
 	if (repMatch) {
 		const sets = parseInt(repMatch[1]);
 		const reps = parseInt(repMatch[2]);
